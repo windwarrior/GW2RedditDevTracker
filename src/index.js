@@ -22,7 +22,7 @@ let store = createStore(
     devTrackerApp,
     applyMiddleware(
         thunkMiddleware,
-        loggerMiddleware
+//        loggerMiddleware
     )
 );
 
