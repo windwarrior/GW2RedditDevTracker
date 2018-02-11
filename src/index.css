@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.anet-post {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.nav-tabs .nav-item {
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-item:first-child {
+  margin-left: 5px;
+}
