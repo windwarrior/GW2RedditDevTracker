@@ -2,7 +2,6 @@ import { RECEIVE_DEV_LIST,RECEIVE_CONTENT_FOR_DEV, RECEIVE_PARENT_CONTENT, FETCH
 
 const initialState = {
     "devs": [],
-    "filtered_devs": [],
     "allowed_subs": ["Guildwars2"],
     "currently_fetching": []
 }
@@ -15,6 +14,7 @@ function devTrackerApp(state = initialState, action) {
                 devs: action.devs.map(x => ({
                     name: x,
                     depleted: false,
+                    hidden: false,
                     content: []
                 }))
             }

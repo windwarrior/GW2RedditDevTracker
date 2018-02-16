@@ -8,6 +8,7 @@ import Parent from './parent';
 import Markdown from '../markdown';
 
 import { Card, CardBody, CardText, Row, Col, CardHeader } from 'reactstrap';
+import Spinner from '../spinner';
 
 class Comment extends React.Component {
 
@@ -26,6 +27,7 @@ class Comment extends React.Component {
             parent = 
                 <details onClick={e => this.props.onParentOpen(this.props.id, this.props.parent_content.id)}>
                     <summary> Show Parent </summary>
+                    <Spinner/>
                 </details>
         }
 

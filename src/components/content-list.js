@@ -2,7 +2,7 @@ import React from 'react';
 
 import TextPost from './posts/text-post';
 import ConnectedComment from '../containers/connected-comment';
-
+import Spinner from '../components/spinner';
 
 class ContentList extends React.Component {
     constructor () {
@@ -27,6 +27,7 @@ class ContentList extends React.Component {
     }
 
     render() {
+
         let content = this.props.contents.map(function (x) {
             let res;
 
@@ -49,6 +50,8 @@ class ContentList extends React.Component {
         return (
             <div>
                 {content}
+
+                <Spinner/>
             </div>
         );
 

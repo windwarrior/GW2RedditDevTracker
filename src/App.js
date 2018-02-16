@@ -8,8 +8,9 @@ import { loadDevListAndContent } from './actions/actions';
 // Components
 import ConnectedDevList from './containers/connected-dev-list';
 import DevContentList from './containers/dev-content-list';
+import Spinner from './components/spinner';
 
-import { Container, Nav, Navbar, NavbarBrand, NavItem, NavLink} from 'reactstrap';
+import { Container, Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler } from 'reactstrap';
 import classnames from 'classnames';
 
 // Other
@@ -22,7 +23,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            page: 'content-list'
+            page: 'content-list',
+            isOpen: false
         };
     }
 
@@ -30,6 +32,12 @@ class App extends Component {
         this.setState({
             page
         })
+    }
+
+    toggle() {
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
     }
 
     componentDidMount() {
@@ -74,13 +82,16 @@ class App extends Component {
         return (
             <div className="app-container">
                 <header>
-                    <Navbar dark color="dark" fixed="top">
+                    <Navbar dark color="dark" fixed="top" expand="md">
                         <NavbarBrand href="#" onClick={(e) => {e.preventDefault(); this.setPage('content-list')}}>GW2 Reddit Dev Tracker</NavbarBrand>
-                        <Nav>
-                            <NavItem>
-                                <NavLink href="#" onClick={(e) => {e.preventDefault(); this.setPage('settings')}}>Settings</NavLink>
-                            </NavItem>
-                        </Nav>
+                        <NavbarToggler onClick={() => this.toggle()} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <NavLink href="#" onClick={(e) => {e.preventDefault(); this.setPage('settings')}}>Settings</NavLink>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
                     </Navbar>
                 </header>
                 <main>
