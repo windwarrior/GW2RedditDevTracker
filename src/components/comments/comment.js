@@ -11,9 +11,6 @@ import { Card, CardBody, CardText, Row, Col, CardHeader } from 'reactstrap';
 import Spinner from '../spinner';
 
 class Comment extends React.Component {
-
-
-
     render() {
         let parent = null;
 
