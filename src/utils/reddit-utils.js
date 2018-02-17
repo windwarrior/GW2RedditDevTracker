@@ -19,7 +19,7 @@ export function thingToContent (thing) {
                 author: thing.data.author,
                 subreddit: thing.data.subreddit,
                 // Reddit counts seconds, JS counts milliseconds
-                date: new Date(thing.data.created_utc * 1000),
+                date: new Date(thing.data.created_utc * 1000).toString(),
                 score: thing.data.score,
                 perma: thing.data.permalink
             },
@@ -31,7 +31,7 @@ export function thingToContent (thing) {
         let meta = {
             title: thing.data.title,
             subreddit: thing.data.subreddit,
-            date: new Date(thing.data.created_utc * 1000),
+            date: new Date(thing.data.created_utc * 1000).toString(),
             perma: thing.data.permalink,
             author: thing.data.author
         }

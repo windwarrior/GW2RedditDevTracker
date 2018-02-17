@@ -1,22 +1,37 @@
-import { RECEIVE_DEV_LIST,RECEIVE_CONTENT_FOR_DEV, RECEIVE_PARENT_CONTENT, FETCHING_CONTENT_FOR_DEV, Offset } from '../actions/actions';
+
+import { actionTypes } from 'redux-localstorage'
+
+import { RECEIVE_DEV_LIST, RECEIVE_CONTENT_FOR_DEV, RECEIVE_PARENT_CONTENT, FETCHING_CONTENT_FOR_DEV, Offset, TOGGLE_FILTER_FOR_DEV } from '../actions/actions';
 
 const initialState = {
     "devs": [],
     "allowed_subs": ["Guildwars2"],
-    "currently_fetching": []
+    "currently_fetching": [],
+    "shouldUpdate": false
 }
 
 function devTrackerApp(state = initialState, action) {
     switch (action.type) {
-        case RECEIVE_DEV_LIST:
+        case actionTypes.INIT:
             return {
                 ...state,
-                devs: action.devs.map(x => ({
-                    name: x,
+                ...(action.payload || {})
+            }
+        case RECEIVE_DEV_LIST:
+            let known_devs = state.devs.map(x => x.name);
+
+            let new_devs = action.devs.filter(x => !known_devs.includes(x)).map(y => {
+                return {
+                    name: y,
                     depleted: false,
                     hidden: false,
                     content: []
-                }))
+                }
+            });
+
+            return {
+                ...state,
+                devs: state.devs.slice().concat(new_devs)
             }
         case FETCHING_CONTENT_FOR_DEV:
             let currently_fetching = state.currently_fetching.slice();
@@ -46,7 +61,7 @@ function devTrackerApp(state = initialState, action) {
                         return {
                             ...x,
                             content,
-                            depleted: action.content.length !== action.limit
+                            depleted: action.content.length !== action.limit && action.offset !== Offset.NEWER
                         }
                     } else {
                         return x;
@@ -58,7 +73,7 @@ function devTrackerApp(state = initialState, action) {
                 ...state,
                 devs: state.devs.map(x => {
                     let index = x.content.findIndex(y => y.id === action.comment_id)
-                    
+
                     if (index >= 0) {
                         let newContent = x.content.slice();
 
@@ -75,6 +90,21 @@ function devTrackerApp(state = initialState, action) {
                         return x;
                     }
                 })
+            }
+        case TOGGLE_FILTER_FOR_DEV:
+            return {
+                ...state,
+                devs: state.devs.map(x => {
+                    if (x.name === action.devName) {
+                        return {
+                            ...x,
+                            hidden: !x.hidden
+                        }
+                    } else {
+                        return x;
+                    }
+                })
+
             }
         default:
             return state;

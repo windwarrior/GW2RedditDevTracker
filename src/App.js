@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions
-import { loadDevListAndContent } from './actions/actions';
+import { update } from './actions/actions';
 
 // Components
 import ConnectedDevList from './containers/connected-dev-list';
@@ -11,7 +11,6 @@ import DevContentList from './containers/dev-content-list';
 import Spinner from './components/spinner';
 
 import { Container, Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler } from 'reactstrap';
-import classnames from 'classnames';
 
 // Other
 import './App.css';
@@ -41,29 +40,8 @@ class App extends Component {
     }
 
     componentDidMount() {
-        /*
-        let timer = window.setInterval(() => this.setState({ counter: this.state.counter + 1 }), 250);
-        this.setState({ timer });
-    
-        // If the page is out of focus, stop all live updating
-        window.addEventListener('visibilitychange', () => {
-          if (document.hidden) {
-            window.clearInterval(this.state.timer);
-          } else {
-            let timer = window.setInterval(() => this.setState({ counter: this.state.counter + 1 }), 250);
-            this.setState({ timer });
-          }
-        })
-        */
-
-        // Load the list of constants
-        this.props.dispatch(loadDevListAndContent());
+        this.props.dispatch(update());
     }
-
-    componentWillUnmount() {
-        window.clearInterval(this.state.timer);
-    }
-
 
     render() {
         let current_page = null;
@@ -95,7 +73,8 @@ class App extends Component {
                     </Navbar>
                 </header>
                 <main>
-                    <Container>
+                    <Container>                        
+                        {this.props.loading ? <Spinner/> : ""}
                         {current_page}
                     </Container>
                 </main>
@@ -104,4 +83,4 @@ class App extends Component {
     }
 }
 
-export default connect()(App);
+export default connect(state => {return { loading: state.currently_fetching.length > 0 }})(App);

@@ -2,29 +2,36 @@ import React from 'react';
 
 import TextPost from './posts/text-post';
 import ConnectedComment from '../containers/connected-comment';
-import Spinner from '../components/spinner';
+
+import { Row, Col, Button } from 'reactstrap';
 
 class ContentList extends React.Component {
-    constructor () {
+    constructor() {
         super();
         this.sensitive = true;
+        this.scrollListener = () => this.onScroll();
     }
 
-    componentDidMount() {        
-        window.addEventListener('scroll', () => this.onScroll());
-    }
+    // componentDidMount() {
+    //     window.addEventListener('scroll', this.scrollListener);
+    //     this.sensitive = true;
+    // }
 
-    componentDidUpdate() {
-        this.sensitive = true;
-    }
+    // componentDidUpdate() {
+    //     this.sensitive = true;
+    // }
 
-    onScroll() {
-        if (this.sensitive && window.scrollY > 0.8 * document.documentElement.scrollHeight) {
-            console.log(window.scrollY, document.documentElement.scrollHeight);
-            this.sensitive = false;
-            this.props.loadOlder();
-        }
-    }
+    // componentWillUnmount() {
+    //     window.removeEventListener('scroll', this.scrollListener);
+    //     this.sensitive = false;
+    // }
+
+    // onScroll() {
+    //     if (this.sensitive && window.scrollY > 0.8 * document.documentElement.scrollHeight) {
+    //         this.sensitive = false;
+    //         this.props.loadOlder();
+    //     }
+    // }
 
     render() {
 
@@ -50,8 +57,11 @@ class ContentList extends React.Component {
         return (
             <div>
                 {content}
-
-                <Spinner/>
+                <Row>
+                    <Col xs="12" md={{ size: 10, offset: 1}} xl={{ size: 8, offset: 2 }}> 
+                        <Button block href="#" onClick={(e) => {e.preventDefault(); this.props.loadOlder()}} className="my-3"> Load Older </Button>
+                    </Col>
+                </Row>
             </div>
         );
 

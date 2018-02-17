@@ -24,7 +24,7 @@ const getVisibleDevContent = (devs, filter, allowed_subs) => {
     let consistent_until = considered_devs
         .filter(x => !x.depleted)
         .filter(x => x.content.length > 0)
-        .map(x => x.content[x.content.length - 1].meta.date)
+        .map(x => new Date(x.content[x.content.length - 1].meta.date))
         .reduce((newest, x) => x > newest ? x : newest, new Date('1970-01-01'));
 
     // Compute the list of content items
@@ -35,19 +35,19 @@ const getVisibleDevContent = (devs, filter, allowed_subs) => {
 
     // 2) Filter on after the considered date
     content_list = content_list
-        .filter(x => x.meta.date >= consistent_until);
+        .filter(x => new Date(x.meta.date) >= consistent_until);
 
     // 3) Filter on content only in allowed subs
     content_list = content_list
         .filter(x => allowed_subs.includes(x.meta.subreddit));
 
     // 4) Sort
-    content_list.sort((a, b) => b.meta.date - a.meta.date);
-
+    content_list.sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date));
     // Returns a list of content items that is:
     // 1) Only of non-filtered devs
     // 2) In subreddits that are allowed
     // 3) Chronologically correct with respect to (possible) unfetched content
+
     return content_list;
 }
 

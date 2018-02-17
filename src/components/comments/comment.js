@@ -44,7 +44,7 @@ class Comment extends React.Component {
                                 <Markdown markdown={this.props.body} />
                             </CardText>
 
-                            <CommentLinks perma={this.props.meta.perma} />
+                            <CommentLinks perma={this.props.meta.perma} author={this.props.meta.author} onAuthorFilter={this.props.onAuthorFilter} />
                         </CardBody>
                     </Card>
                 </Col>

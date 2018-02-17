@@ -33,9 +33,9 @@ export function fetchContentForDev(dev, limit, offset) {
     offset = offset || Offset.NONE;
     let offset_str = "";
 
-    if (offset == Offset.NEWER) {
+    if (offset === Offset.NEWER) {
         offset_str = `&before=${dev.content[0].id}`;
-    } else if (offset == Offset.OLDER) {
+    } else if (offset === Offset.OLDER) {
         offset_str = `&after=${dev.content[dev.content.length - 1].id}`;
     }
 
@@ -93,13 +93,24 @@ export function receiveParentContent(comment_id, content) {
 }
 
 // Composite actions
-export function loadDevListAndContent() {
+export function update() {
     return function (dispatch, getState) {
         dispatch(loadDevList()).then(() =>
             Promise.all(
                 getState().devs
-                    .map(x => dispatch(fetchContentForDev(x, 25, Offset.NONE)))
-            ));
+                    .map(x => {
+                        if (x.content.length === 0 && !x.depleted) {
+                            // New dev, never fetched
+                            return dispatch(fetchContentForDev(x, 25, Offset.NONE))
+                        } else if (!x.depleted) {
+                            return dispatch(fetchContentForDev(x, 100, Offset.NEWER))
+                        }
+
+                        return Promise.resolve();
+                    }
+                )
+            )
+        );
     }
 }
 
@@ -110,7 +121,7 @@ export function loadOlderContent() {
         let devs = getState().devs.slice().filter(x => !x.depleted);
         devs.sort(
             (a, b) => {
-                return b.content[b.content.length - 1].meta.date - a.content[a.content.length - 1].meta.date
+                return new Date(b.content[b.content.length - 1].meta.date) - new Date(a.content[a.content.length - 1].meta.date)
             }
         );
 
@@ -127,5 +138,14 @@ export function loadNewerContent() {
         Promise.all(getState().devs
             .map(x => dispatch(fetchContentForDev(x, 25, Offset.NEWER)))
         )
+    }
+}
+
+export const TOGGLE_FILTER_FOR_DEV = "TOGGLE_FILTER_FOR_DEV";
+
+export function toggleFilterForDev(devName) {
+    return {
+        type: TOGGLE_FILTER_FOR_DEV,
+        devName
     }
 }

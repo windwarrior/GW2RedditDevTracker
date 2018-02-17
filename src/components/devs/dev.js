@@ -13,8 +13,8 @@ class Dev extends React.Component {
             <ListGroupItem>
                 {this.props.dev.name} 
                 {this.props.dev.hidden
-                    ? <Button className="float-right" color="success">Show</Button> 
-                    : <Button className="float-right" color="danger">Hide</Button> 
+                    ? <Button className="float-right" color="success" onClick={() => this.props.toggleFilterForDev(this.props.dev.name)}>Track</Button> 
+                    : <Button className="float-right" color="danger" onClick={() => this.props.toggleFilterForDev(this.props.dev.name)}>Filter</Button> 
                 }
             </ListGroupItem>
         )
