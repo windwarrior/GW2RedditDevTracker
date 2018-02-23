@@ -29,8 +29,16 @@ class App extends Component {
 
     setPage(page) {
         this.setState({
-            page
+            page,
+            isOpen: false
         })
+    }
+
+    toggleSettingPage() {
+        this.setState({
+            page: this.state.page === 'settings' ? 'content-list' : 'settings',
+            isOpen: false
+        });
     }
 
     toggle() {
@@ -66,7 +74,7 @@ class App extends Component {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink href="#" onClick={(e) => {e.preventDefault(); this.setPage('settings')}}>Settings</NavLink>
+                                    <NavLink href="#" onClick={(e) => {e.preventDefault(); this.toggleSettingPage()}}>Settings</NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>
