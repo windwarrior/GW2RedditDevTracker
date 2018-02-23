@@ -7,7 +7,7 @@ class ToggleList extends React.Component {
         return (
             <div> 
                 {this.props.toggles.map(x => 
-                    <Toggle {...x} flipToggle={this.props.flipToggle}/>
+                    <Toggle key={x.name} {...x} flipToggle={this.props.flipToggle}/>
                 )}
             </div>
         )        

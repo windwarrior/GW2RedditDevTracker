@@ -16,9 +16,7 @@ class Settings extends React.Component {
                             Toggles
                         </CardHeader>
                         <CardBody>
-                            <CardText>
-                                <ToggleList toggles={this.props.toggles} flipToggle={this.props.flipToggle} />
-                            </CardText>
+                            <ToggleList toggles={this.props.toggles} flipToggle={this.props.flipToggle} />
                         </CardBody>
                     </Card>
 
@@ -28,9 +26,9 @@ class Settings extends React.Component {
                         </CardHeader>
                         <CardBody>
                             <CardText>
-                                <p> <em> Posts or comments by developers that are filtered will not be shown in the dev tracker </em> </p>
-                                <FilterList entries={this.props.entries} toggleFilterForEntry={this.props.toggleFilterForEntry}/>
-                            </CardText>
+                                <em> Posts or comments by developers that are filtered will not be shown in the dev tracker </em>
+                            </CardText>                            
+                            <FilterList entries={this.props.entries} toggleFilterForEntry={this.props.toggleFilterForEntry}/>
                         </CardBody>
                     </Card>                
                 </Col>

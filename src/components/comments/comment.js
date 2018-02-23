@@ -17,13 +17,13 @@ class Comment extends React.Component {
         if (this.props.parent_content.last_updated != null) {
             parent =
                 <details>
-                    <summary> Show Parent</summary>
+                    <summary> Parent</summary>
                     <Parent parent_content={this.props.parent_content} />
                 </details>
         } else {
             parent =
                 <details onClick={e => this.props.onParentOpen(this.props.id, this.props.parent_content.id)}>
-                    <summary> Show Parent </summary>
+                    <summary> Parent </summary>
                     <Spinner />
                 </details>
         }
