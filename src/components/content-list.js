@@ -56,9 +56,11 @@ class ContentList extends React.Component {
 
         return (
             <div>
-                {content}
+                
                 <Row>
-                    <Col xs="12" md={{ size: 10, offset: 1}} xl={{ size: 8, offset: 2 }}> 
+                    <Col xs="12" md={{ size: 10, offset: 1}} xl={{ size: 8, offset: 2 }} className="content-container">
+                        {content}
+                        
                         <Button block href="#" onClick={(e) => {e.preventDefault(); this.props.loadOlder()}} className="my-3"> Load Older </Button>
                     </Col>
                 </Row>

@@ -149,3 +149,12 @@ export function toggleFilterForDev(devName) {
         devName
     }
 }
+
+export const FLIP_TOGGLE = "FLIP_TOGGLE";
+
+export function flipToggle(toggleName) {
+    return {
+        type: FLIP_TOGGLE,
+        toggleName
+    }
+}

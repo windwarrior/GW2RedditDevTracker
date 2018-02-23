@@ -1,22 +1,20 @@
-
-import { actionTypes } from 'redux-localstorage'
-
-import { RECEIVE_DEV_LIST, RECEIVE_CONTENT_FOR_DEV, RECEIVE_PARENT_CONTENT, FETCHING_CONTENT_FOR_DEV, Offset, TOGGLE_FILTER_FOR_DEV } from '../actions/actions';
+import { RECEIVE_DEV_LIST, RECEIVE_CONTENT_FOR_DEV, RECEIVE_PARENT_CONTENT, FETCHING_CONTENT_FOR_DEV, Offset, TOGGLE_FILTER_FOR_DEV, FLIP_TOGGLE } from '../actions/actions';
 
 const initialState = {
     "devs": [],
+    "filter": [],
     "allowed_subs": ["Guildwars2"],
     "currently_fetching": [],
-    "shouldUpdate": false
+    "toggles": [
+        {
+            "name": "Dark Mode",
+            "state": false
+        }
+    ]
 }
 
 function devTrackerApp(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.INIT:
-            return {
-                ...state,
-                ...(action.payload || {})
-            }
         case RECEIVE_DEV_LIST:
             let known_devs = state.devs.map(x => x.name);
 
@@ -105,6 +103,20 @@ function devTrackerApp(state = initialState, action) {
                     }
                 })
 
+            }
+        case FLIP_TOGGLE:
+            return {
+                ...state,
+                toggles: state.toggles.map(x => {
+                    if (x.name === action.toggleName) {
+                        return {
+                            ...x,
+                            state: !x.state
+                        }
+                    } else {
+                        return x;
+                    }
+                })
             }
         default:
             return state;

@@ -1,9 +1,5 @@
-html,body {
-  padding-top: 30px;
-  height: 100%;
-}
-
-#root {
+body {
+  padding-top: 60px;
   height: 100%;
 }
 
@@ -16,4 +12,46 @@ html,body {
 .tab-container {
   flex-grow: 1;
   background: white;
+}
+
+.anet-post {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.nav-tabs .nav-item {
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-item:first-child {
+  margin-left: 5px;
+}
+
+.navbar {
+  border-bottom: 4px solid var(--primary);
+}
+
+.dark-mode {
+  background-color: var(--dark);
+  color: #fff;
+}
+
+.dark-mode  .card {
+  background-color: var(--dark);
+}
+
+.dark-mode .navbar {
+  border-bottom: 4px solid var(--orange);
+}
+
+.dark-mode a {
+  color: var(--orange);
+}
+
+.dark-mode .list-group-item {
+  background-color: var(--dark);
+}
+
+.dark-mode .spinner-container div {
+  background-color: var(--orange);
 }

@@ -7,6 +7,16 @@ class CommentLinks extends React.Component {
         let absolute_link = `https://www.reddit.com${this.props.perma}`;
         let context_link = `${absolute_link}?context=3`;
 
+        let filter_link = "";
+
+        if (this.props.onAuthorFilter) {
+            filter_link = (
+                <CardLink href="#" onClick={() => this.props.onAuthorFilter(this.props.author)}>
+                    Filter {this.props.author}
+                </CardLink>
+            );
+        }
+
         return (
             <div>
                 <CardLink href={absolute_link}>
@@ -17,9 +27,7 @@ class CommentLinks extends React.Component {
                     Context
                 </CardLink>
 
-                <CardLink href="#" onClick={() => this.props.onAuthorFilter(this.props.author)}>
-                    Filter {this.props.author}
-                </CardLink>
+                {filter_link}
             </div>
         )
     }

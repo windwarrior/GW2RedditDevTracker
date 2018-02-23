@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { update } from './actions/actions';
 
 // Components
-import ConnectedDevList from './containers/connected-dev-list';
+import ConnectedSettings from './containers/connected-settings';
 import DevContentList from './containers/dev-content-list';
 import Spinner from './components/spinner';
 
@@ -51,14 +51,14 @@ class App extends Component {
                 current_page = <DevContentList/>
                 break;
             case 'settings':
-                current_page = <ConnectedDevList/>
+                current_page = <ConnectedSettings/>
                 break;
             default:
                 current_page = null;
         }
 
         return (
-            <div className="app-container">
+            <div className={"app-container" + (this.props.darkMode ? " dark-mode" : "")}>
                 <header>
                     <Navbar dark color="dark" fixed="top" expand="md">
                         <NavbarBrand href="#" onClick={(e) => {e.preventDefault(); this.setPage('content-list')}}>GW2 Reddit Dev Tracker</NavbarBrand>
@@ -83,4 +83,11 @@ class App extends Component {
     }
 }
 
-export default connect(state => {return { loading: state.currently_fetching.length > 0 }})(App);
+const mapStateToProps = state => {
+    return {
+        loading: state.currently_fetching.length > 0,
+        darkMode: state.toggles.find(x => x.name === "Dark Mode").state
+    }
+}
+
+export default connect(mapStateToProps)(App);
