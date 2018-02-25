@@ -55,3 +55,11 @@ body {
 .dark-mode .spinner-container div {
   background-color: var(--orange);
 }
+
+.summary::before {
+  content: "▷";
+}
+
+.summary.open::before {
+  content: "▽";
+}

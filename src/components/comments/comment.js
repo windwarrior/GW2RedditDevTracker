@@ -11,21 +11,43 @@ import { Card, CardBody, CardText, CardHeader } from 'reactstrap';
 import Spinner from '../spinner';
 
 class Comment extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isOpen: false
+        };
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+
     render() {
         let parent = null;
 
         if (this.props.parent_content.last_updated != null) {
             parent =
-                <details>
-                    <summary> Parent</summary>
-                    <Parent parent_content={this.props.parent_content} />
-                </details>
+                <div>
+                    <div class={"summary" + (this.state.isOpen ? " open" : "")} onClick={e => this.toggle()}> Parent </div>
+                    {this.state.isOpen ?
+                        <div>
+                            <Parent parent_content={this.props.parent_content} />
+                        </div> : ""}
+                </div>
         } else {
             parent =
-                <details onClick={e => this.props.onParentOpen(this.props.id, this.props.parent_content.id)}>
-                    <summary> Parent </summary>
-                    <Spinner />
-                </details>
+                <div>
+                    <div class={"summary" + (this.state.isOpen ? " open" : "")} onClick={e => { this.toggle(); this.props.onParentOpen(this.props.id, this.props.parent_content.id) }}> Parent </div>
+                    {this.state.isOpen ?
+                        <div>
+                            <Spinner />
+                        </div> : ""}
+
+                </div>
         }
 
         return (
