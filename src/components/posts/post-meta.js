@@ -1,5 +1,5 @@
-import React from 'react';
-import { CardTitle } from 'reactstrap';
+import React from "react";
+import { CardTitle } from "reactstrap";
 
 class PostMeta extends React.Component {
     /*
@@ -17,9 +17,12 @@ class PostMeta extends React.Component {
         return (
             <CardTitle>
                 <a href={this.props.meta.perma}>{this.props.meta.title}</a>
-                <small> by <a href={author_perma}>{this.props.meta.author}</a> in {this.props.meta.subreddit}</small>
+                <small>
+                    by <a href={author_perma}>{this.props.meta.author}</a> in{" "}
+                    {this.props.meta.subreddit}
+                </small>
             </CardTitle>
-        )
+        );
     }
 }
 

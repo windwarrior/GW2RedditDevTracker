@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import TextPost from './posts/text-post';
-import ConnectedComment from '../containers/connected-comment';
+import TextPost from "./posts/text-post";
+import ConnectedComment from "../containers/connected-comment";
 
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button } from "reactstrap";
 
 class ContentList extends React.Component {
     constructor() {
@@ -34,39 +34,42 @@ class ContentList extends React.Component {
     // }
 
     render() {
-
-        let content = this.props.contents.map(function (x) {
+        let content = this.props.contents.map(function(x) {
             let res;
 
             if (x.type === "comment") {
-                res = <ConnectedComment
-                    key={x.id}
-                    {...x}
-                />
+                res = <ConnectedComment key={x.id} {...x} />;
             } else if (x.type === "text-post") {
-                res = <TextPost
-                    key={x.id}
-                    {...x}
-                />
+                res = <TextPost key={x.id} {...x} />;
             }
 
             return res;
-        }
-        )
+        });
 
         return (
             <div>
-                
                 <Row>
-                    <Col xs="12" md={{ size: 10, offset: 1}} xl={{ size: 8, offset: 2 }} className="content-container">
+                    <Col
+                        xs="12"
+                        md={{ size: 10, offset: 1 }}
+                        xl={{ size: 8, offset: 2 }}
+                        className="content-container">
                         {content}
-                        
-                        <Button block href="#" onClick={(e) => {e.preventDefault(); this.props.loadOlder()}} className="my-3"> Load Older </Button>
+
+                        <Button
+                            block
+                            href="#"
+                            onClick={e => {
+                                e.preventDefault();
+                                this.props.loadOlder();
+                            }}
+                            className="my-3">
+                            Load Older
+                        </Button>
                     </Col>
                 </Row>
             </div>
         );
-
     }
 }
 

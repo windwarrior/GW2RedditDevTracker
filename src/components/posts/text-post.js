@@ -1,18 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import PostMeta from '../posts/post-meta';
+import PostMeta from "../posts/post-meta";
 
-import Markdown from '../markdown';
+import Markdown from "../markdown";
 
-import { Card, CardBody, CardText, CardHeader } from 'reactstrap';
+import { Card, CardBody, CardText, CardHeader } from "reactstrap";
 
 class TextPost extends React.Component {
     render() {
         return (
             <Card outline className="mt-3">
-                <CardHeader className="anet-post">
-                    Post by ArenaNet
-                </CardHeader>
+                <CardHeader className="anet-post">Post by ArenaNet</CardHeader>
                 <CardHeader>
                     <PostMeta meta={this.props.meta} />
                 </CardHeader>
@@ -23,8 +21,7 @@ class TextPost extends React.Component {
                     </CardText>
                 </CardBody>
             </Card>
-        )
-
+        );
     }
 }
 

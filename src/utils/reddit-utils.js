@@ -1,6 +1,6 @@
-export function thingToContent (thing) {
+export function thingToContent(thing) {
     if (thing.kind === "t1") {
-        // "T1" childs are comments                        
+        // "T1" childs are comments
         return {
             type: "comment",
             id: thing.data.name,
@@ -13,7 +13,7 @@ export function thingToContent (thing) {
                 title: thing.data.link_title,
                 subreddit: thing.data.subreddit,
                 perma: thing.data.link_url,
-                author: thing.data.link_author           
+                author: thing.data.link_author
             },
             meta: {
                 author: thing.data.author,
@@ -24,8 +24,7 @@ export function thingToContent (thing) {
                 perma: thing.data.permalink
             },
             body: thing.data.body
-        }
-
+        };
     } else if (thing.kind === "t3") {
         // "T3" childs are either self posts or links
         let meta = {
@@ -34,7 +33,7 @@ export function thingToContent (thing) {
             date: new Date(thing.data.created_utc * 1000).toString(),
             perma: thing.data.permalink,
             author: thing.data.author
-        }
+        };
 
         let body;
 
@@ -51,6 +50,6 @@ export function thingToContent (thing) {
             last_updated: new Date(),
             meta,
             body
-        }
+        };
     }
 }

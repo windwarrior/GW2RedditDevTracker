@@ -1,65 +1,65 @@
 body {
-  padding-top: 60px;
-  height: 100%;
+    padding-top: 60px;
+    height: 100%;
 }
 
 .app-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .tab-container {
-  flex-grow: 1;
-  background: white;
+    flex-grow: 1;
+    background: white;
 }
 
 .anet-post {
-  background-color: #dc3545 !important;
-  color: white;
+    background-color: #dc3545 !important;
+    color: white;
 }
 
 .nav-tabs .nav-item {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 
 .nav-tabs .nav-item:first-child {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 .navbar {
-  border-bottom: 4px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
 }
 
 .dark-mode {
-  background-color: var(--dark);
-  color: #fff;
+    background-color: var(--dark);
+    color: #fff;
 }
 
-.dark-mode  .card {
-  background-color: var(--dark);
+.dark-mode .card {
+    background-color: var(--dark);
 }
 
 .dark-mode .navbar {
-  border-bottom: 4px solid var(--orange);
+    border-bottom: 4px solid var(--orange);
 }
 
 .dark-mode a {
-  color: var(--orange);
+    color: var(--orange);
 }
 
 .dark-mode .list-group-item {
-  background-color: var(--dark);
+    background-color: var(--dark);
 }
 
 .dark-mode .spinner-container div {
-  background-color: var(--orange);
+    background-color: var(--orange);
 }
 
 .summary::before {
-  content: "▷";
+    content: "▷";
 }
 
 .summary.open::before {
-  content: "▽";
+    content: "▽";
 }

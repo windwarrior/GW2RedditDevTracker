@@ -1,5 +1,5 @@
-import React from 'react';
-import { ListGroupItem, Button } from 'reactstrap';
+import React from "react";
+import { ListGroupItem, Button } from "reactstrap";
 
 class FilterEntry extends React.Component {
     /*
@@ -12,9 +12,15 @@ class FilterEntry extends React.Component {
         return (
             <ListGroupItem>
                 {this.props.entry.name}
-                <Button className="float-right" color={ this.props.entry.hidden ? "success" : "danger" } onClick={() => this.props.toggleFilterForEntry(this.props.entry.name)}>{ this.props.entry.hidden ? "Track" : "Filter" }</Button>
+                <Button
+                    className="float-right"
+                    color={this.props.entry.hidden ? "success" : "danger"}
+                    onClick={() => this.props.toggleFilterForEntry(this.props.entry.name)}
+                >
+                    {this.props.entry.hidden ? "Track" : "Filter"}
+                </Button>
             </ListGroupItem>
-        )
+        );
     }
 }
 

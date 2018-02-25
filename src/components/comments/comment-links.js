@@ -1,8 +1,7 @@
-import React from 'react';
-import { CardLink } from 'reactstrap';
+import React from "react";
+import { CardLink } from "reactstrap";
 
 class CommentLinks extends React.Component {
-    
     render() {
         let absolute_link = `https://www.reddit.com${this.props.perma}`;
         let context_link = `${absolute_link}?context=3`;
@@ -19,17 +18,13 @@ class CommentLinks extends React.Component {
 
         return (
             <div>
-                <CardLink href={absolute_link}>
-                    Permalink
-                </CardLink>
+                <CardLink href={absolute_link}>Permalink</CardLink>
 
-                <CardLink href={context_link}>
-                    Context
-                </CardLink>
+                <CardLink href={context_link}>Context</CardLink>
 
                 {filter_link}
             </div>
-        )
+        );
     }
 }
 
