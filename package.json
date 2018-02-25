@@ -5,20 +5,20 @@
   "homepage": "https://windwarrior.github.io/GW2RedditDevTracker",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
-    "gh-pages": "^1.1.0",
     "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-infinite-scroll": "^0.1.5",
     "react-moment": "^0.7.0",
     "react-redux": "^5.0.6",
-    "react-scripts": "1.0.17",
     "reactstrap": "^5.0.0-alpha.4",
     "redux": "^3.7.2",
-    "redux-localstorage-filter": "^0.1.1",
     "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0",
     "snuownd": "^1.1.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0",
+    "react-scripts": "1.0.17"
   },
   "scripts": {
     "start": "react-scripts start",
