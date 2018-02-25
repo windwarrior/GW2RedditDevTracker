@@ -56,10 +56,16 @@ body {
     background-color: var(--orange);
 }
 
+.summary:hover {
+    cursor: pointer;
+}
+
 .summary::before {
     content: "▷";
+    margin-right: 0.5rem;
 }
 
 .summary.open::before {
     content: "▽";
+    margin-right: 0.5rem;
 }
