@@ -1,7 +1,7 @@
 import React from "react";
-import { CardTitle } from "reactstrap";
-
 import Moment from "react-moment";
+
+import { CardTitle } from "reactstrap";
 
 class CommentMeta extends React.Component {
     render() {

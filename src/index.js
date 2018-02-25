@@ -13,7 +13,6 @@ import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 import devTrackerApp from "./reducers/main-reducer";
 
-
 import registerServiceWorker from "./registerServiceWorker";
 
 import "./index.css";
