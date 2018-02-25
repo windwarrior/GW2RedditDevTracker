@@ -1,8 +1,7 @@
 import React from "react";
 
-import PostMeta from "../posts/post-meta";
-
 import Markdown from "../markdown";
+import PostMeta from "../posts/post-meta";
 
 import { Card, CardBody, CardText, CardHeader } from "reactstrap";
 

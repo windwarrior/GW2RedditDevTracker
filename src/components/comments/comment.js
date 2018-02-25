@@ -1,13 +1,12 @@
 import React from "react";
 
-import PostMeta from "../posts/post-meta";
-import CommentMeta from "./comment-meta";
-import CommentLinks from "./comment-links";
-import Parent from "./parent";
-
-import Markdown from "../markdown";
-
 import { Card, CardBody, CardText, CardHeader } from "reactstrap";
+
+import CommentLinks from "./comment-links";
+import CommentMeta from "./comment-meta";
+import Markdown from "../markdown";
+import Parent from "./parent";
+import PostMeta from "../posts/post-meta";
 import Spinner from "../spinner";
 
 class Comment extends React.Component {

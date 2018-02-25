@@ -1,11 +1,10 @@
 import React from "react";
 
-import CommentMeta from "./comment-meta";
-import CommentLinks from "./comment-links";
-
-import Markdown from "../markdown";
-
 import { CardText } from "reactstrap";
+
+import CommentLinks from "./comment-links";
+import CommentMeta from "./comment-meta";
+import Markdown from "../markdown";
 
 class Parent extends React.Component {
     render() {

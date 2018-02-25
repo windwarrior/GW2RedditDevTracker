@@ -1,23 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { applyMiddleware, compose, createStore } from "redux";
 import { Provider } from "react-redux";
-import { compose, createStore } from "redux";
-
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.css";
-
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
-
-import devTrackerApp from "./reducers/main-reducer";
 
 import thunkMiddleware from "redux-thunk";
-import { applyMiddleware } from "redux";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
+
+import App from "./App";
+import devTrackerApp from "./reducers/main-reducer";
+
+
+import registerServiceWorker from "./registerServiceWorker";
+
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 const persistConfig = {
     key: "storage",

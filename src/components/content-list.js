@@ -1,9 +1,9 @@
 import React from "react";
 
+import { Row, Col, Button } from "reactstrap";
+
 import TextPost from "./posts/text-post";
 import ConnectedComment from "../containers/connected-comment";
-
-import { Row, Col, Button } from "reactstrap";
 
 class ContentList extends React.Component {
     constructor() {
@@ -11,27 +11,6 @@ class ContentList extends React.Component {
         this.sensitive = true;
         this.scrollListener = () => this.onScroll();
     }
-
-    // componentDidMount() {
-    //     window.addEventListener('scroll', this.scrollListener);
-    //     this.sensitive = true;
-    // }
-
-    // componentDidUpdate() {
-    //     this.sensitive = true;
-    // }
-
-    // componentWillUnmount() {
-    //     window.removeEventListener('scroll', this.scrollListener);
-    //     this.sensitive = false;
-    // }
-
-    // onScroll() {
-    //     if (this.sensitive && window.scrollY > 0.8 * document.documentElement.scrollHeight) {
-    //         this.sensitive = false;
-    //         this.props.loadOlder();
-    //     }
-    // }
 
     render() {
         let content = this.props.contents.map(function(x) {

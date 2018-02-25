@@ -1,14 +1,5 @@
-// React & Redux
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-// Actions
-import { update } from "./actions/actions";
-
-// Components
-import ConnectedSettings from "./containers/connected-settings";
-import DevContentList from "./containers/dev-content-list";
-import Spinner from "./components/spinner";
 
 import {
     Container,
@@ -21,7 +12,13 @@ import {
     NavbarToggler
 } from "reactstrap";
 
-// Other
+
+import ConnectedSettings from "./containers/connected-settings";
+import DevContentList from "./containers/dev-content-list";
+import Spinner from "./components/spinner";
+
+import { update } from "./actions/actions";
+
 import "./App.css";
 
 class App extends Component {

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { ListGroupItem, Button } from "reactstrap";
 
 class FilterEntry extends React.Component {
