@@ -15,6 +15,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 };
 
-const ConnectedComment = connect((state, ownProps) => ownProps, mapDispatchToProps)(Comment);
+const CommentContainer = connect((state, ownProps) => ownProps, mapDispatchToProps)(Comment);
 
-export default ConnectedComment;
+export default CommentContainer;

@@ -12,8 +12,8 @@ import {
     NavbarToggler
 } from "reactstrap";
 
-import ConnectedSettings from "./containers/connected-settings";
-import DevContentList from "./containers/dev-content-list";
+import ConnectedSettings from "./containers/settings-container";
+import ContentListContainer from "./containers/content-list-container";
 import Spinner from "./components/spinner";
 
 import { update } from "./actions/actions";
@@ -59,7 +59,7 @@ class App extends Component {
 
         switch (this.state.page) {
             case "content-list":
-                current_page = <DevContentList />;
+                current_page = <ContentListContainer />;
                 break;
             case "settings":
                 current_page = <ConnectedSettings />;

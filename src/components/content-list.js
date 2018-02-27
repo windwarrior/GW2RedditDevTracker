@@ -3,7 +3,7 @@ import React from "react";
 import { Row, Col, Button } from "reactstrap";
 
 import TextPost from "./posts/text-post";
-import ConnectedComment from "../containers/connected-comment";
+import CommentContainer from "../containers/comment-container";
 
 class ContentList extends React.Component {
     constructor() {
@@ -17,7 +17,7 @@ class ContentList extends React.Component {
             let res;
 
             if (x.type === "comment") {
-                res = <ConnectedComment key={x.id} {...x} />;
+                res = <CommentContainer key={x.id} {...x} />;
             } else if (x.type === "text-post") {
                 res = <TextPost key={x.id} {...x} />;
             }

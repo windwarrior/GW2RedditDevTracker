@@ -21,6 +21,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 };
 
-const ConnectedSettings = connect(mapStateToProps, mapDispatchToProps)(Settings);
+const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings);
 
-export default ConnectedSettings;
+export default SettingsContainer;

@@ -68,8 +68,8 @@ const options = {
     }
 };
 
-const DevContentList = connect(mapStateToProps, mapDispatchToProps, undefined, options)(
+const ContentListContainer = connect(mapStateToProps, mapDispatchToProps, undefined, options)(
     ContentList
 );
 
-export default DevContentList;
+export default ContentListContainer;
