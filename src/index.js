@@ -17,6 +17,7 @@ import registerServiceWorker from "./registerServiceWorker";
 
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
+import DarkModeContainer from "./containers/dark-mode-container";
 
 const persistConfig = {
     key: "storage",
@@ -34,7 +35,9 @@ const persistor = persistStore(store);
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={<div> Loading... </div>} persistor={persistor}>
-            <App />
+            <DarkModeContainer>
+                <App />
+            </DarkModeContainer>
         </PersistGate>
     </Provider>,
     document.getElementById("root")

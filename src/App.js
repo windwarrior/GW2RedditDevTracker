@@ -12,7 +12,6 @@ import {
     NavbarToggler
 } from "reactstrap";
 
-
 import ConnectedSettings from "./containers/connected-settings";
 import DevContentList from "./containers/dev-content-list";
 import Spinner from "./components/spinner";
@@ -70,7 +69,7 @@ class App extends Component {
         }
 
         return (
-            <div className={"app-container" + (this.props.darkMode ? " dark-mode" : "")}>
+            <div className="app-container">
                 <header>
                     <Navbar dark color="dark" fixed="top" expand="md">
                         <NavbarBrand
@@ -111,8 +110,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.currently_fetching.length > 0,
-        darkMode: state.toggles.find(x => x.name === "Dark Mode").state
+        loading: state.currently_fetching.length > 0
     };
 };
 
