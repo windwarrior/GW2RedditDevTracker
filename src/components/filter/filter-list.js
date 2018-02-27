@@ -6,8 +6,21 @@ import FilterEntry from "./filter-entry";
 
 class FilterList extends React.Component {
     render() {
-        let filtered = this.props.entries.filter(x => x.hidden);
-        let tracked = this.props.entries.filter(x => !x.hidden);
+        let entries = this.props.entries;
+        entries.sort((x, y) => {
+            if (x.name < y.name) {
+                return -1;
+            } else if (x.name > y.name) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        console.log(entries);
+
+        let filtered = entries.filter(x => x.hidden);
+        let tracked = entries.filter(x => !x.hidden);
 
         return (
             <div>
